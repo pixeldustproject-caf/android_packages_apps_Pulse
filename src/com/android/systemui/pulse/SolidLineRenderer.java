@@ -252,10 +252,10 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
                     Settings.System.getUriFor(Settings.System.PULSE_LAVALAMP_SOLID_SPEED), false, this,
                     UserHandle.USER_ALL);
 					            resolver.registerContentObserver(
-                    Settings.Secure.getUriFor(Settings.Secure.FLING_PULSE_LAVALAMP_COLOR_FROM), false, this,
+                    Settings.System.getUriFor(Settings.System.FLING_PULSE_LAVALAMP_COLOR_FROM), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(
-                    Settings.Secure.getUriFor(Settings.Secure.FLING_PULSE_LAVALAMP_COLOR_TO), false, this,
+                    Settings.System.getUriFor(Settings.System.FLING_PULSE_LAVALAMP_COLOR_TO), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.PULSE_SOLID_UNITS_COUNT), false, this,
@@ -267,7 +267,7 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
                     Settings.System.getUriFor(Settings.System.PULSE_AUTO_COLOR), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(
-                    Settings.Secure.getUriFor(Settings.Secure.FLING_PULSE_SMOOTHING_ENABLED), false,
+                    Settings.System.getUriFor(Settings.System.FLING_PULSE_SMOOTHING_ENABLED), false,
                     this,
                     UserHandle.USER_ALL);
         }
@@ -299,12 +299,12 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
                     Settings.System.PULSE_LAVALAMP_SOLID_SPEED, 10 * 1000,
                     UserHandle.USER_CURRENT);
             mLavaLamp.setAnimationTime(lavaLampSpeed);
-            int lavaLampColorFrom= Settings.Secure.getIntForUser(resolver,
-                    Settings.Secure.FLING_PULSE_LAVALAMP_COLOR_FROM,
+            int lavaLampColorFrom= Settings.System.getIntForUser(resolver,
+                    Settings.System.FLING_PULSE_LAVALAMP_COLOR_FROM,
                     0xffff8080,
                     UserHandle.USER_CURRENT);
-            int lavaLampColorTo = Settings.Secure.getIntForUser(resolver,
-                    Settings.Secure.FLING_PULSE_LAVALAMP_COLOR_TO,
+            int lavaLampColorTo = Settings.System.getIntForUser(resolver,
+                    Settings.System.FLING_PULSE_LAVALAMP_COLOR_TO,
                     0xff8080ff,
                     UserHandle.USER_CURRENT);
             mLavaLamp.setAnimationColors(lavaLampColorFrom, lavaLampColorTo);
@@ -318,8 +318,8 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
             mDbFuzzFactor = Settings.System.getIntForUser(
                     resolver, Settings.System.PULSE_SOLID_FUDGE_FACTOR, 5,
                     UserHandle.USER_CURRENT);
-            mSmoothingEnabled = Settings.Secure.getIntForUser(resolver,
-                    Settings.Secure.FLING_PULSE_SMOOTHING_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
+            mSmoothingEnabled = Settings.System.getIntForUser(resolver,
+                    Settings.System.FLING_PULSE_SMOOTHING_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
 
             int oldUnits = mUnits;
             mUnits = Settings.System.getIntForUser(

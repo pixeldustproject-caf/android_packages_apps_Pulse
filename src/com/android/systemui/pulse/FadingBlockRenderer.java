@@ -235,10 +235,10 @@ public class FadingBlockRenderer extends Renderer implements ColorAnimator.Color
                     Settings.System.getUriFor(Settings.System.PULSE_CUSTOM_DIMEN), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(
-                    Settings.Secure.getUriFor(Settings.Secure.FLING_PULSE_LAVALAMP_COLOR_FROM), false, this,
+                    Settings.System.getUriFor(Settings.System.FLING_PULSE_LAVALAMP_COLOR_FROM), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(
-                    Settings.Secure.getUriFor(Settings.Secure.FLING_PULSE_LAVALAMP_COLOR_TO), false, this,
+                    Settings.System.getUriFor(Settings.System.FLING_PULSE_LAVALAMP_COLOR_TO), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.PULSE_CUSTOM_DIV), false, this,
@@ -259,7 +259,7 @@ public class FadingBlockRenderer extends Renderer implements ColorAnimator.Color
                     this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(
-                    Settings.Secure.getUriFor(Settings.Secure.FLING_PULSE_SMOOTHING_ENABLED), false,
+                    Settings.System.getUriFor(Settings.System.FLING_PULSE_SMOOTHING_ENABLED), false,
                     this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(
@@ -296,18 +296,18 @@ public class FadingBlockRenderer extends Renderer implements ColorAnimator.Color
                     UserHandle.USER_CURRENT);
             mLavaLamp.setAnimationTime(time);
             
-            int lavaLampColorFrom= Settings.Secure.getIntForUser(resolver,
-                    Settings.Secure.FLING_PULSE_LAVALAMP_COLOR_FROM,
+            int lavaLampColorFrom= Settings.System.getIntForUser(resolver,
+                    Settings.System.FLING_PULSE_LAVALAMP_COLOR_FROM,
                     0xffff8080,
                     UserHandle.USER_CURRENT);
-            int lavaLampColorTo = Settings.Secure.getIntForUser(resolver,
-                    Settings.Secure.FLING_PULSE_LAVALAMP_COLOR_TO,
+            int lavaLampColorTo = Settings.System.getIntForUser(resolver,
+                    Settings.System.FLING_PULSE_LAVALAMP_COLOR_TO,
                     0xff8080ff,
                     UserHandle.USER_CURRENT);
             mLavaLamp.setAnimationColors(lavaLampColorFrom, lavaLampColorTo);
 
-            mSmoothingEnabled = Settings.Secure.getIntForUser(resolver,
-                    Settings.Secure.FLING_PULSE_SMOOTHING_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
+            mSmoothingEnabled = Settings.System.getIntForUser(resolver,
+                    Settings.System.FLING_PULSE_SMOOTHING_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
 
             if (mLavaLampEnabled && mIsValidStream) {
                 mLavaLamp.start();
